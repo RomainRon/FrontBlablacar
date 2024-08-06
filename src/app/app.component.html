@@ -1,9 +1,9 @@
 <nav>
   <ul>
     <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/login">Login</a></li>
-    <li><a routerLink="/register">Register</a></li>
-    <li><button (click)="logout()">Logout</button></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
+    <li *ngIf="isLoggedIn"><button (click)="logout()">Logout</button></li>
   </ul>
 </nav>
 <!-- The routed views render in the <router-outlet>-->

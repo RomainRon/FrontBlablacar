@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register(this.registerForm.value).subscribe(response => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
+        (window as any).isLoggedIn = true;
         this.router.navigate(['/']);
       });
     }
